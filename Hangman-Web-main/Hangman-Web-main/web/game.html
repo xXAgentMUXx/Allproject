@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../web/game.css">
+    <title>Jeu du Pendu</title>
+</head>
+
+<body>
+    <header>
+        <a href="/" class="logo">Hangman</a>
+        <nav>
+            <a href="menu">Home</a>
+            <a href="game" class="active">Play Game</a>
+            <a href="credits">Credits</a>
+            <a href="rules">Rules</a>
+        </nav>
+    </header>
+
+    <section class="game-container">
+        <div class="game-content">
+            <div class="quit-game">
+                <form action="/quit" method="POST">
+                    <button class="btn quit-btn">Quit</button>
+                </form>
+            </div>
+
+            <div class="white-block">
+                <h1 class="game-title">Jeu du Pendu</h1>
+                <p class="hidden-word-label">Mot à deviner : <span class="hidden-word">{{ .HiddenWordStr }}</span></p>
+                <pre class="hangman">{{ .HangmanStr }}</pre>
+
+                {{ if not .HardMode }}
+                <p class="guessed-letters-label">Lettres devinées : <span class="guessed-letters">{{ .GuessedLettersStr }}</span></p>
+                {{ end }}
+
+                <p class="attempts-left">Il vous reste <span class="attempts">{{ .AttemptsLeft }}</span> tentatives.</p>
+
+                {{ if not .Finished }}
+                <div class="guess">
+                    <form action="/guess" method="POST">
+                        <p>Devinez une lettre ou le mot complet :</p>
+                        <input type="text" name="input" maxlength="50" required placeholder="Entrez ici">
+                        <button type="submit" class="btn submit-btn">Valider</button>
+                    </form>
+                </div>
+                {{ else }}
+                <p class="game-over">Jeu terminé :</p>
+                <div class="restart-buttons">
+                    <a href="/restart" class="btn normal">Rejouer en mode normal</a>
+                    <a href="/restart?mode=hard" class="btn hard">Rejouer en mode difficile</a>
+                </div>
+                {{ end }}
+
+                <p class="message {{ if eq .Message "Félicitations ! Vous avez deviné le mot." }}success{{ end }}">
+                    {{ .Message }}
+                </p>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

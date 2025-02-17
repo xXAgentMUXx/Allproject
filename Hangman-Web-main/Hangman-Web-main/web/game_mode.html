@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/web/game_mode.css">
+    <title>Choose Game Mode</title>
+</head>
+
+<body>
+    <header>
+        <a href="#" class="logo">Hangman</a>
+        <nav>
+            <a href="menu">Home</a>
+            <a href="game" class="active">Play Game</a>
+            <a href="credits">Credits</a>
+            <a href="rules">Rules</a>
+        </nav>
+    </header>
+
+    <section class="mode-selection">
+        <h1>Choose Your Game Mode</h1>
+        <div class="mode-buttons">
+            <form action="/restart" method="GET">
+                <button type="submit" name="mode" value="normal" class="btn normal">Normal Mode</button>
+                <button type="submit" name="mode" value="hard" class="btn hard">Hard Mode</button>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

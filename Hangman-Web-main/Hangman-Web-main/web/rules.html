@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="../web/rules.css">
+    <title>Portfolio Website</title>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">Hangman</a>
+
+        <nav>
+          <a href="menu" class="active">Home</a>
+          <a href="game" >Play Game</a>
+          <a href="credits">Credits</a>
+          <a href="rules">Rules</a>
+      </nav>
+        </nav>
+    </header>
+
+
+    <div class="dropdown">
+        <button onclick="myFunction()" class="dropW">what is the Hangman ? </button>
+        <div id="Whangman" class="dropdown-content-W">
+          <p>Hangman is a classic word-guessing game where players try to identify a hidden word by suggesting letters. Incorrect guesses gradually "build" a hanged stick figure, and the game ends if the figure is fully drawn before the word is guessed.</p>
+        </div>
+      </div>
+<br>
+      <button onclick="myFunction2()" class="dropR">How to play Hangman?</button>
+        <div id="Rhangman" class="dropdown-content-R">
+          <p>Hangman is a classic word-guessing game where players try to identify a hidden word by suggesting letters. Incorrect guesses gradually "build" a hanged stick figure, and the game ends if the figure is fully drawn before the word is guessed.</p>
+        </div>
+      </div> 
+<br>
+      <button onclick="myFunctionDifficult()" class="dropD"> What are the difficulties ?</button>
+        <div id="Dhangman" class="dropdown-content-D">
+          <p>Hangman is a classic word-guessing game where players try to identify a hidden word by suggesting letters or guessing the words. Incorrect guesses gradually "build" a hanged stick figure, and the game ends if the figure is fully drawn before the word is guessed.
+            In hard mode,the letter revealed in the beginning of the game is less present, If you use the same letter, it will count as penalty, if you use more than 3 vowels, then you get a penalty where even if the vowel is correct, you lose an attempt. Also, the used letters are not displayed anymore in guessed letters.</p>
+        </div>
+      </div> 
+</body>
+<script src="../web/rules.js"></script>
+</html>
+
+
+
