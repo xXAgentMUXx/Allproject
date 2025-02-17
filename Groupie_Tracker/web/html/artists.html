@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artists</title>
+    <link rel="stylesheet" href="/web/css/artists.css">
+    <script src="/web/js/go_up.js" defer></script>
+    <script src="/web/js/search.js" defer></script> 
+</head>
+<body>
+    <header>
+        <h1>Artists</h1>       
+        <div id="search-filters">
+            <form id="search-form" method="GET" action="/artists">
+                <input 
+                    type="text" 
+                    name="q" 
+                    id="search-query" 
+                    placeholder="Search for an artist or member..." 
+                    required
+                >
+            </form>
+            <form id="filter-form" method="GET" action="/artists">
+                <label for="dates">Dates:</label>
+                <input type="text" id="dates" name="dates" placeholder="DD-MM-YYYY">
+
+                <label for="memberCount">Number of Members:</label>
+                <input type="number" id="memberCount" name="memberCount" min="1">
+
+                <button type="submit">Apply Filters</button>
+            </form>
+        </form> 
+        </div>
+    </header>
+    <ul>
+        {{ range .Artists }}
+        <li>
+            <h2>{{ .Name }}</h2>
+            <img src="{{ .Image }}" alt="Image of {{ .Name }}" width="150">
+            <p><strong>Members:</strong></p>
+            <ul>
+                {{ range .Relations }}
+                <li>{{ . }}</li>
+                {{ end }}
+            </ul>
+            <p><strong>Locations:</strong></p>
+            <ul class="locations"> 
+                {{ range (split .Locations ", ") }}
+                <li><a href="/artists?place={{ . | urlquery }}" title="Learn about the location">{{ . }}</a></li>
+                {{ end }}
+            </ul>
+            <p><strong>Dates:</strong></p>
+            <ul>
+                {{ range .Dates }}
+                <li>{{ . }}</li>
+                {{ end }}
+            </ul>
+            <a href="/artists?id={{ .ID }}" class="details_button">More details</a>
+        </li>
+        {{ else }}
+        <p>No artists found.</p>
+        {{ end }}
+    </ul>
+    <button onclick="topFunction()" id="myBtn">Go Up</button>
+</body>
+</html>

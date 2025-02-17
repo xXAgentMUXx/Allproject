@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location: {{ .Place }}</title>
+    <link rel="stylesheet" href="/web/css/locations.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+</head>
+<body>
+    <h1>Location: {{ .Place }}</h1>
+    <button id="goBackButton" onclick="window.location.href='/artists'">Go Back</button>
+    <div id="map" style="height: 860px; width: 100%;"></div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            
+            const lat = parseFloat("{{ .Lat }}");
+            const lng = parseFloat("{{ .Lng }}");
+
+
+            const map = L.map('map').setView([lat, lng], 12);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            const marker = L.marker([lat, lng]).addTo(map);
+            marker.bindPopup("{{ .Place }}").openPopup();
+        });
+    </script>
+</body>
+</html>
