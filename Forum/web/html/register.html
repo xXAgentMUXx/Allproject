@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription</title>
+    <link rel="stylesheet" href="/web/css/register.css">
+    <script defer src="/web/js/rate_limiting.js"></script>
+</head>
+<body>
+    <div id="button-container">
+        <a href="/" class="back">Retour a l'accueil</a>
+        </div>
+    <div class="container">
+        <h1>Inscription</h1>
+        <form action="/register" method="POST">
+            <input type="email" name="email" required placeholder="Email">
+            <input type="text" name="username" required placeholder="Nom d'utilisateur">
+            <input type="password" name="password" required placeholder="Mot de passe">
+            <button type="submit">S'inscrire</button>
+        </form>
+        <a href="/auth/google">
+            <button>S'inscrire avec Google</button>
+        </a>
+        <p>
+            <a href="/auth/github">
+                <button>S'inscrire avec GitHub</button>
+            </a>
+        </p>
+    </div>
+</body>
+</html>
